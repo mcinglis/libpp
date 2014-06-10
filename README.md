@@ -5,6 +5,7 @@
 #include <libpp/foldr.h>         // PP_FOLDR
 #include <libpp/intersperse.h>   // PP_INTERSPERSE
 #include <libpp/map.h>           // PP_MAP
+#include <libpp/separators.h>    // PP_SEP_SEMICOLON, PP_SEP_AND
 
 #define ASSERT( ... ) \
     PP_MAP( assert, PP_SEP_SEMICOLON, __VA_ARGS__ )
@@ -41,11 +42,13 @@ I'm storing the rendered templates in version control to make the project more a
 
 [Questions](https://github.com/mcinglis/libpp/issues?labels=question), [discussion](https://github.com/mcinglis/libpp/issues?labels=discussion), [bug reports](https://github.com/mcinglis/libpp/issues?labels=bug), [feature requests](https://github.com/mcinglis/libpp/issues?labels=enhancement), and pull requests are very welcome.
 
+
 ## Releases
 
 I'll [tag](http://git-scm.com/book/en/Git-Basics-Tagging) the [releases](https://github.com/mcinglis/libpp/releases) according to [semantic versioning](http://semver.org/spec/v2.0.0.html); all the macros preceded by `// @public` are considered public; they'll only change between major versions. The other macros could change any time. I don't consider adding identifiers prefixed with `PP_` as being an incompatible change (thus requiring a major version bump), even though there's a (tiny) chance that it could break your code.
 
 Every release will be signed with [my personal GPG key](http://p80.pool.sks-keyservers.net/pks/lookup?op=vindex&search=0xD020F814) (`0xD020F814`).
+
 
 ## Tests
 
@@ -72,7 +75,7 @@ Libpp is simple and pragmatic: it's not a quirky experiment. The macros have cle
 
 #### Generating preprocessor code? Are you insane?
 
-Yes, I am. Still, generating the code is the best way out. It's maintainable, flexible, and fast.
+Yes, I am. Still, generating the code is the best way out: it's maintainable, flexible, and fast.
 
 #### Why don't you provide a header that includes everything?
 
@@ -92,7 +95,7 @@ This library depends on C99 macro syntax, so it won't work for C++. Apparently O
 
 Objective-C users: please note the AGPL license -- you can't use this library to develop nonfree software. Contact me for proprietary licensing options (but I'd encourage you to consider releasing your work as free software!).
 
-### Why do you license Libpp under the AGPL?
+#### Why do you license Libpp under the AGPL?
 
 [I believe that nonfree software is harmful](http://minglis.id.au/blog/2014/04/09/free-software-free-society.html), and I don't want to contribute to its development at all. I believe that a free society must necessarily operate on free software. I want to encourage the development of free software, and discourage the development of nonfree software.
 
