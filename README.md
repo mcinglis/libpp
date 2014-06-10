@@ -1,5 +1,5 @@
 
-**[Libpp](https://github.com/mcinglis/libpp)** provides functional-programming macros for the C preprocessor, enabling a crude form of a metaprogramming. Libpp is usable, simple, and fast. Best of all, unlike my [previous efforts](https://github.com/mcinglis/macrofun), it conforms to the C11 and C99 standards.
+**[Libpp](https://github.com/mcinglis/libpp)** provides functional-programming macros for the C preprocessor, enabling a crude form of a metaprogramming. Libpp is usable, simple, and fast. Best of all, it conforms to the C11 and C99 standards (unlike my [previous efforts](https://github.com/mcinglis/macrofun)).
 
 ``` c
 #include <libpp/foldr.h>         // PP_FOLDR
@@ -21,23 +21,23 @@ ALL( X, Y, Z )  // ( ( X ) && ( Y ) && ( Z ) )
 PRODUCT( 87, 6.324, -732 )  // ( 87 * ( 6.324 * -732 ) )
 ```
 
-I've found Libpp to be useful for building macros that let me test and assert the invariants of a structure, without repetition of the individual invariants. `PP_MAP_LISTS` makes it much easier to write generic macros with C11's `_Generic`. I'm also Libpp to (re)build a testing library with a really nice interface. As a taster:
+I've found Libpp to be useful for building macros that let me test and assert the invariants of a structure, without repetition of the individual invariants. `PP_MAP_LISTS` makes it easy to write generic macros with C11's `_Generic`. I'm also using Libpp to (re)build a testing library with a really nice interface. As a taster:
 
 ``` c
 return assertions( ASSERTION( 1 + 3 == 4 ),
                    ASSERTION( "test"[2] == 'x' ),
                    ASSERTION( some_function() ) );
-// Can become (thanks to PP_MAP):
+// Thanks to PP_MAP, can become:
 return ASSERTIONS( 1 + 3 == 4,
                    "test"[2] == 'x',
                    some_function() );
 ```
 
-Because the C preprocessing language doesn't permit true recursion, the supposedly variable-argument macros (`PP_MAP`, `PP_FOLDR`, etc) are actually limited in how many arguments they can take: by default, 128. This limit, as well as notable preprocessing speed improvements, lead me to automatically generating parts of the header files. Running `make` will generate the header files from the corresponding templates in the `templates/` directory. So, if you want the macros to accept more arguments, just change the `limit` variable in the Makefile, then `make clean && make`.
+Because the C preprocessor doesn't permit true recursion, the supposedly variable-argument macros (`PP_MAP`, `PP_FOLDR`, etc) are actually limited in how many arguments they can take: by default, 128. This limit, as well as notable preprocessing speed improvements, lead me to automatically generating parts of the header files. Running `make` will generate the header files from the corresponding templates in the `templates/` directory. So, if you want the macros to accept more or fewer arguments, just change the `limit` variable in the Makefile, then `make clean && make`.
 
-Note that the Make targets run the `templates/render.py` script, which was written for Python 3; it requires a `python3` program in your PATH.
+Note that `make` will execute the `templates/render.py` script, which was written for Python 3; it requires `python3` to be on your PATH.
 
-I'm storing the rendered templates in version control to make the project more approachable. People can read the code as it's used without cloning the repository and running Make. Also, users can clone the repository and use the headers without requiring Python 3.
+I'm storing the rendered templates in version control to make the project more approachable. People can read the code as it's used without cloning the repository and running Make. Also, users can clone the repository and include the headers without requiring Python 3 to generate them.
 
 [Questions](https://github.com/mcinglis/libpp/issues?labels=question), [discussion](https://github.com/mcinglis/libpp/issues?labels=discussion), [bug reports](https://github.com/mcinglis/libpp/issues?labels=bug), [feature requests](https://github.com/mcinglis/libpp/issues?labels=enhancement), and pull requests are very welcome.
 
@@ -98,7 +98,7 @@ Objective-C users: please note the AGPL license -- you can't use this library to
 
 The [GPL](https://gnu.org/licenses/gpl.html) was designed to ensure that the software stays free software; "to ensure that every user has freedom". The GPL's protections may have sufficed in 1990, but they don't in 2014. The GPL doesn't consider users of a web service to be users of the software implementing that server. Thankfully, the [AGPL](https://www.gnu.org/licenses/agpl.html) does.
 
-The AGPL ensures that if Libpp is used to implement a web service, then the entire source code of that web service must be made available. This way, I'm not contributing to nonfree software, whether it's executed locally or provided over a network.
+The AGPL ensures that if Libpp is used to implement a web service, then the entire source code of that web service must be free software. This way, I'm not contributing to nonfree software, whether it's executed locally or provided over a network.
 
 
 ## License: AGPL
@@ -107,7 +107,7 @@ The AGPL ensures that if Libpp is used to implement a web service, then the enti
 
 Libpp is free software: you can redistribute it and/or modify it under the terms of the [GNU Affero General Public License](https://gnu.org/licenses/agpl.html) as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
-Libpp is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+Libpp is distributed in the hope that it will be useful, but **without any warranty**; without even the implied warranty of **merchantability** or **fitness for a particular purpose**. See the GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License along with Libpp. If not, see <https://gnu.org/licenses/>.
 
