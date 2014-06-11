@@ -40,39 +40,73 @@
 // comparison operators don't work like mathematical notation when they're
 // chained: `2 < 3 < 2 == true`.
 
+// @public
 #define PP_SEP_NONE( ... )
+// @public
 #define PP_SEP_COMMA( ... )                ,
+// @public
 #define PP_SEP_SEMICOLON( ... )            ;
+// @public
 #define PP_SEP_PLUS( ... )                 +
+// @public
 #define PP_SEP_MINUS( ... )                -
+// @public
 #define PP_SEP_TIMES( ... )                *
+// @public
 #define PP_SEP_DIVIDE( ... )               /
+// @public
 #define PP_SEP_MODULO( ... )               %
+// @public
 #define PP_SEP_AND( ... )                  &&
+// @public
 #define PP_SEP_OR( ... )                   ||
+// @public
 #define PP_SEP_LT( ... )                   <
+// @public
 #define PP_SEP_LE( ... )                   <=
+// @public
 #define PP_SEP_EQ( ... )                   ==
+// @public
 #define PP_SEP_NEQ( ... )                  !=
+// @public
 #define PP_SEP_GE( ... )                   >=
+// @public
 #define PP_SEP_GT( ... )                   >
+// @public
 #define PP_SEP_BIT_AND( ... )              &
+// @public
 #define PP_SEP_BIT_OR( ... )               |
+// @public
 #define PP_SEP_BIT_XOR( ... )              ^
+// @public
 #define PP_SEP_BIT_LSHIFT( ... )           <<
+// @public
 #define PP_SEP_BIT_RSHIFT( ... )           >>
+// @public
 #define PP_SEP_ASSIGN( ... )               =
+// @public
 #define PP_SEP_PLUS_ASSIGN( ... )          +=
+// @public
 #define PP_SEP_MINUS_ASSIGN( ... )         -=
+// @public
 #define PP_SEP_TIMES_ASSIGN( ... )         *=
+// @public
 #define PP_SEP_DIVIDE_ASSIGN( ... )        /=
+// @public
 #define PP_SEP_MODULO_ASSIGN( ... )        %=
+// @public
 #define PP_SEP_BIT_AND_ASSIGN( ... )       &=
+// @public
 #define PP_SEP_BIT_OR_ASSIGN( ... )        |=
+// @public
 #define PP_SEP_BIT_XOR_ASSIGN( ... )       ^=
+// @public
 #define PP_SEP_BIT_LSHIFT_ASSIGN( ... )    <<=
+// @public
 #define PP_SEP_BIT_RSHIFT_ASSIGN( ... )    >>=
+// @public
 #define PP_SEP_FIELD( ... )                .
+// @public
 #define PP_SEP_DEREF_FIELD( ... )          ->
 
 
