@@ -1,7 +1,9 @@
 
-#include "foldr.h"
-#include "map-pairs.h"
-#include "separators.h"
+#include "foldr.h"      // PP_FOLDR
+#include "map-lists.h"  // PP_MAP_LISTS
+#include "map-pairs.h"  // PP_MAP_PAIRS
+#include "separators.h" // PP_SEP_AND, PP_SEP_NONE
+#include "zip2.h"       // PP_ZIP2
 
 
 #define PLUS( X, Y ) \
@@ -22,4 +24,17 @@ SUM( 49, 1.56, 0x76, 'e', 748172 )
 
 INCREASING( 873, 9283 )
 INCREASING( 14, 87, 1267, 9837.542, ( 123 * 471 ), 0746 )
+
+
+#define NAMES foo, bar, baz, glop, duh
+#define VALUES 98, 47, 9.38, 756, 2376
+
+#define PAIRS PP_ZIP2( ( NAMES ), ( VALUES ) )
+
+#define DEFINE_FUNC( NAME, VALUE ) \
+    double calc_##NAME(double const x) { \
+        return x * VALUE; \
+    }
+PP_MAP_LISTS( DEFINE_FUNC, PP_SEP_NONE, PAIRS )
+
 
