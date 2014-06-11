@@ -36,7 +36,7 @@ return ASSERTIONS( 1 + 3 == 4,
 
 See the [`realistic` test input](tests/realistic.in.c) and [output](tests/realistic.in.c) for more examples.
 
-Because the C preprocessor doesn't permit true recursion, the supposedly variable-argument macros (`PP_MAP`, `PP_FOLDR`, etc) are actually limited in how many arguments they can take: by default, 128. This limit, as well as notable preprocessing speed improvements, lead me to automatically generating parts of the header files. Running `make` will generate the header files from the corresponding templates in the [`templates/`](templates/) directory. So, if you want the macros to accept more or fewer arguments, just change the `limit` variable in the Makefile, then `make clean && make`.
+Because the C preprocessor doesn't permit true recursion, the supposedly variable-argument macros (`PP_MAP`, `PP_FOLDR`, etc) are actually limited in how many arguments they can take: by default, 128. This limit, as well as notable preprocessing speed improvements, lead me to automatically generating parts of the header files. Running `make` will generate the header files from the corresponding templates in the [`templates/`](templates/) directory. So, if you want the macros to accept more or fewer arguments, just change the `limit` variable in the [Makefile](Makefile), then `make clean && make`.
 
 Note that `make` will execute the [`templates/render.py`](templates/render.py) script, which was written for Python 3; it requires `python3` to be on your PATH.
 
