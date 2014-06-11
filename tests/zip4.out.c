@@ -1,6 +1,0 @@
-(a,f,m,v)
-(a,f,m,v)
-(a,f,m,v),(b,g,n,w)
-(a,f,m,v),(b,g,n,w)
-(a,f,m,v),(b,g,n,w),(c,h,o,x)
-(a,f,m,v),(b,g,n,w),(c,h,o,x)

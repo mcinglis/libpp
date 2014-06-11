@@ -1,6 +1,0 @@
-(a,e,j,q,v)
-(a,e,j,q,v)
-(a,e,j,q,v),(b,f,k,r,w)
-(a,e,j,q,v),(b,f,k,r,w)
-(a,e,j,q,v),(b,f,k,r,w),(c,g,l,s,x)
-(a,e,j,q,v),(b,f,k,r,w),(c,g,l,s,x)
