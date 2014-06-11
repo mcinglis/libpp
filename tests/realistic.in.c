@@ -3,7 +3,7 @@
 #include "map-lists.h"  // PP_MAP_LISTS
 #include "map-pairs.h"  // PP_MAP_PAIRS
 #include "separators.h" // PP_SEP_AND, PP_SEP_NONE
-#include "zip2.h"       // PP_ZIP2
+#include "zip.h"        // PP_ZIP
 
 
 #define PLUS( X, Y ) \
@@ -29,7 +29,7 @@ INCREASING( 14, 87, 1267, 9837.542, ( 123 * 471 ), 0746 )
 #define NAMES foo, bar, baz, glop, duh
 #define VALUES 98, 47, 9.38, 756, 2376
 
-#define PAIRS PP_ZIP2( ( NAMES ), ( VALUES ) )
+#define PAIRS PP_ZIP( ( NAMES ), ( VALUES ) )
 
 #define DEFINE_FUNC( NAME, VALUE ) \
     double calc_##NAME(double const x) { \
