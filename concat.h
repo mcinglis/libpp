@@ -21,16 +21,14 @@
 #define LIBPP_CONCAT_H
 
 
-#include "call.h"  // PP_CALL
-
-
 // @public
 // The `##` operator is specified to only replace a preprocessor expression
 // if that expression is exactly the name of an argument of the macro using
 // the `##` operator. This macro can be used to concatenate any two
-// preprocessor expressions, and not just arguments.
+// preprocessor expressions, and not just arguments, by delaying the
+// concatenation to after a round of evaluation of the two expressions.
 #define PP_CONCAT( X, Y ) \
-    PP_CALL( PP_CONCAT_, X, Y )
+    PP_CONCAT_( X, Y )
 
 
 #define PP_CONCAT_( X, Y ) \
