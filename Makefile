@@ -13,7 +13,7 @@ $(output): %.h: $(templates_dir)/%.h
 	$(render) "$(limit)" "$<" > "$@"
 
 .PHONY: test
-test:
+test: all
 	tests/run.bash
 
 .PHONY: clean
