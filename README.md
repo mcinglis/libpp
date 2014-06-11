@@ -22,14 +22,14 @@ ALL( X, Y, Z )  // ( ( X ) && ( Y ) && ( Z ) )
 PRODUCT( 87, 6.324, -732 )  // ( 87 * ( 6.324 * -732 ) )
 ```
 
-I've found Libpp to be useful for building macros that let me test and assert the invariants of a structure, without repetition of the individual invariants. Libpp can make it easier to do computations at compile-time, if that's what you need. `PP_MAP_LISTS` makes it easy to write generic macros with C11's `_Generic`. I'm also using Libpp to (re)build a testing library with a really nice interface. As a taster:
+I've found Libpp to be useful for building macros that let me test and assert the invariants of a structure, without repetition of the individual invariants. Libpp can make it easier to do computations at compile-time, if that's what you need. C11's `_Generic` is really verbose (an `int` handler does not cover `int const`s), but `PP_MAP_LISTS` can make it a lot nicer to use. I'm also using Libpp to (re)build a testing library with a really nice interface:
 
 ``` c
-return assertions( ASSERTION( 1 + 3 == 4 ),
+return assertions( ASSERTION( 1 + 3 < 6 ),
                    ASSERTION( "test"[2] == 'x' ),
                    ASSERTION( some_function() ) );
 // Thanks to PP_MAP, can become:
-return ASSERTIONS( 1 + 3 == 4,
+return ASSERTIONS( 1 + 3 < 6,
                    "test"[2] == 'x',
                    some_function() );
 ```
