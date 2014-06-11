@@ -58,13 +58,10 @@ tests/run.bash
 Pass: foldl
 Pass: foldr
 Pass: intersperse
-Pass: map-lists
-Pass: map-pairs
-Pass: map
-Pass: realistic
+...
 ```
 
-The tests aren't *extensive*, but I think they're adequate.
+The tests work by `diff`ing the output of `gcc -E` with each `tests/*.in.c` against the corresponding `tests/*.out.c`. These `out.c` files contain the preprocessor output provided by GCC 4.8. Thus, the tests may "fail" with other preprocessors, even though they output functionally-equivalent code.
 
 
 ## Q&A
