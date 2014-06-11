@@ -32,7 +32,8 @@ def parse_args(raw_args: [str]) -> Namespace:
                      'generation code below. The code should define a '
                      '`{context_func_name}` function that generates a dict. '
                      'The template text is then rendered by: '
-                     '`text.format(limit=limit, **(context(limit))`')
+                     '`text.format(limit=limit, '
+                     '**({context_func_name}(limit))`')
                     .format(template_separator = TEMPLATE_SEPARATOR,
                             context_func_name  = CONTEXT_FUNC_NAME))
     p.add_argument('limit', type=int)
