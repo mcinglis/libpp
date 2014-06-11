@@ -76,6 +76,18 @@ Libpp is simple and pragmatic: it's not a quirky experiment. The macros have cle
 
 Yes, I am. Still, generating the code is the best way out: it's maintainable, flexible, and fast.
 
+#### How fast is "fast"?
+
+On an Intel i7-2620M, with normal stuff running in the background, executing GCC hot:
+
+```
+$ time gcc -E -std=c11 -Wall -Wpedantic -P -I. tests/*.in.c > /dev/null
+
+real    0m0.088s
+user    0m0.052s
+sys     0m0.030s
+```
+
 #### Why don't you provide a header that includes everything?
 
 I don't like unified headers, and I don't want to encourage their use. Unified headers:
