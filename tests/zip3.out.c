@@ -1,0 +1,5 @@
+(a,j,r)
+(a,j,r)
+(a,j,r)
+(a,j,r),(b,k,s)
+(a,j,r),(b,k,s),(c,l,t)
