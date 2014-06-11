@@ -80,9 +80,9 @@ Yes, I am. Still, generating the code is the best way out: it's maintainable, fl
 
 I don't like unified headers, and I don't want to encourage their use. Unified headers:
 
+- relieve the library developer of their responsibility to provide loosely-coupled modules clearly separated by their purpose and abstraction, and of the user to use those modules as such;
 - make it harder to determine where a certain identifier came from;
 - pollute the namespace, which can lead to all kinds of nasty bugs;
-- relieve the library developer of their responsibility to provide loosely-coupled modules clearly separated by their purpose and abstraction, and of the user to use those modules as such;
 - make it harder to maintain ABI compatibility;
 - make code slower to compile and link.
 
