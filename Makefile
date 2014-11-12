@@ -1,20 +1,22 @@
 
-limit          = 128
-templates_dir  = templates
-render	       = $(templates_dir)/render.py
+# The maximum number of arguments that the macros can take:
+LIBPP_LIMIT ?= 128
 
-templates      = $(wildcard $(templates_dir)/*.h)
-output         = $(notdir $(templates))
+templates = $(wildcard templates/*.h)
+output    = $(notdir $(templates))
+
 
 .PHONY: all
 all: $(output)
 
-$(output): %.h: $(templates_dir)/%.h
-	$(render) "$(limit)" "$<" > "$@"
+$(output): %.h: templates/%.h
+	templates/render.py "$(LIBPP_LIMIT)" "$<" > "$@"
+
 
 .PHONY: test
 test: all
 	tests/run.bash
+
 
 .PHONY: clean
 clean:
