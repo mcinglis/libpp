@@ -1,5 +1,5 @@
 
-**[Libpp](https://github.com/mcinglis/libpp)** provides functional-programming macros for the C preprocessor, enabling a crude form of a metaprogramming. Libpp is usable, simple, and fast. Best of all, it conforms to the C11 and C99 standards (unlike my [previous efforts](https://github.com/mcinglis/macrofun)).
+**[Libpp](https://github.com/mcinglis/libpp)** provides functional-programming macros for the C preprocessor, enabling a crude form of a metaprogramming. Libpp is simple, fast, and standards-conformant (C99 and up).
 
 ``` c
 #include <libpp/foldr.h>         // PP_FOLDR
@@ -22,23 +22,30 @@ ALL( X, Y, Z )  // ( ( X ) && ( Y ) && ( Z ) )
 PRODUCT( 87, 6.324, -732 )  // ( 87 * ( 6.324 * ( -732 * 1 ) ) )
 ```
 
-I've found Libpp to be useful for building macros that let me test and assert the invariants of a structure, without repetition of the individual invariants. Libpp can make it easier to do computations at compile-time, if that's what you need. C11's `_Generic` is really verbose (an `int` handler does not cover `int const`s), but `PP_MAP_LISTS` can make it a lot nicer to use. I'm also using Libpp to (re)build a testing library with a really nice interface:
+I've found Libpp to be useful for:
+
+- improving APIs and removing repetition in my code.
+- treating code as data, e.g. by defining a struct's invariants as a list of expressions, then using that list in multiple places.
+- defining variable-argument generic macros as demonstrated above.
+- doing simplistic compile-time computations (although in general I prefer to rely on intelligent compilation).
+
+I'm using Libpp to build a testing library with a really nice interface:
 
 ``` c
 return assertions( ASSERTION( 1 + 3 < 6 ),
                    ASSERTION( "test"[2] == 'x' ),
-                   ASSERTION( some_function() ) );
+                   ASSERTION( func() != NULL ) );
 // Thanks to PP_MAP, can become:
 return assertions( 1 + 3 < 6,
                    "test"[2] == 'x',
-                   some_function() );
+                   func() != NULL );
 ```
 
 See the [`realistic` test input](tests/realistic.in.c) and [output](tests/realistic.out.c) for more examples.
 
-Because the C preprocessor doesn't permit true recursion, the supposedly variable-argument macros (`PP_MAP`, `PP_FOLDR`, etc) are actually limited in how many arguments they can take: by default, 128. This limit, as well as notable preprocessing speed improvements, lead me to automatically generating parts of the header files. Running `make` will generate the header files from the corresponding templates in the [`templates/`](templates/) directory. If you want the macros to accept more or fewer arguments, just set the `LIBPP_LIMIT` environment variable and run `make clean && make`.
+Because the C preprocessor doesn't permit true recursion, the supposedly variable-argument macros (`PP_MAP`, `PP_FOLDR`, etc) are actually limited in how many arguments they can take: by default, 128. This limit, as well as notable preprocessing speed improvements, lead me to automatically generating parts of the header files. Running `make` will generate the header files from the corresponding templates in the [`templates/`](templates/) directory. If you want the macros to accept more or fewer arguments, just set the `LIBPP_LIMIT` environment variable and run `make clean all`.
 
-Note that `make` will execute the [`templates/render.py`](templates/render.py) script, which was written for Python 3; it assumes `python3` is on your PATH.
+Note that `make` will execute the [`templates/render.py`](templates/render.py) script, which was written for Python 3.3; it assumes `python3` is on your PATH.
 
 I'm storing the rendered templates in version control to make the project more approachable. People can read the code as it's used without cloning the repository and running Make. Also, users can clone the repository and include the headers without requiring Python 3 to generate them.
 
@@ -57,13 +64,14 @@ Every version tag will be signed with [my GPG key](http://pool.sks-keyservers.ne
 ```
 $ make test
 tests/run.bash
+Pass: call
 Pass: foldl
 Pass: foldr
 Pass: intersperse
 ...
 ```
 
-The tests work by `diff`ing the output of `gcc -E` with each `tests/*.in.c` against the corresponding `tests/*.out.c`. These `out.c` files contain the preprocessor output provided by GCC 4.8. Thus, the tests may "fail" with other preprocessors, even though they output functionally-equivalent code.
+The tests work by `diff`ing the output of `gcc -E` with each `tests/*.in.c` against the corresponding `tests/*.out.c`. Those `out.c` files contain the preprocessor output provided by GCC 4.8. Thus, the tests may "fail" with other preprocessors, even though they output functionally-equivalent code.
 
 
 ## Q&A
@@ -103,13 +111,13 @@ Libpp is distributed in the hope that it will be useful, but **without any warra
 
 You should have received a copy of the GNU Affero General Public License along with Libpp. If not, see <https://gnu.org/licenses/>.
 
-[Contact me](mailto:me@minglis.id.au) for alternative licensing options.
+[Contact me](mailto:me@minglis.id.au) for commercial licensing options.
 
 ### Why AGPL?
 
 [I believe that nonfree software is harmful](http://minglis.id.au/blog/2014/04/09/free-software-free-society.html), and I don't want to contribute to its development at all. I believe that a free society must necessarily operate on free software. I want to encourage the development of free software, and discourage the development of nonfree software.
 
-The [GPL](https://gnu.org/licenses/gpl.html) was designed to ensure that the software stays free software; "to ensure that every user has freedom". The GPL's protections may have sufficed in 1990, but they don't in 2014. The GPL doesn't consider users of a web service to be users of the software implementing that server. Thankfully, the [AGPL](https://www.gnu.org/licenses/agpl.html) does.
+The [GPL](https://gnu.org/licenses/gpl.html) was designed to ensure that the software stays free software; "to ensure that every user has freedom". The GPL's protections may have sufficed in 1990, but they don't in 2014. The GPL doesn't consider users of a web service to be users of the software implementing that server. Thankfully, the AGPL does.
 
 The AGPL ensures that if Libpp is used to implement a web service, then the entire source code of that web service must be free software. This way, I'm not contributing to nonfree software, whether it's executed locally or provided over a network.
 
