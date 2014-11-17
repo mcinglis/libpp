@@ -49,7 +49,7 @@ Note that `make` will execute the [`templates/render.py`](templates/render.py) s
 
 I'm storing the rendered templates in version control to make the project more approachable. People can read the code as it's used without cloning the repository and running Make. Also, users can clone the repository and include the headers without requiring Python 3 to generate them.
 
-[Questions](https://github.com/mcinglis/libpp/issues?labels=question), [discussion](https://github.com/mcinglis/libpp/issues?labels=discussion), [bug reports](https://github.com/mcinglis/libpp/issues?labels=bug), [feature requests](https://github.com/mcinglis/libpp/issues?labels=enhancement), and pull requests are very welcome.
+[Questions](https://github.com/mcinglis/libpp/labels/question), [discussion](https://github.com/mcinglis/libpp/labels/discussion), [bug reports](https://github.com/mcinglis/libpp/labels/bug), [feature requests](https://github.com/mcinglis/libpp/labels/enhancement), and pull requests are very welcome.
 
 
 ## Releases
@@ -96,10 +96,6 @@ I don't like unified headers, and I don't want to encourage their use. Unified h
 
 If you need to include six header files from Libpp, your source file is probably doing too much, and should be broken up.
 
-### Does this work for C++ or Objective-C?
-
-This library depends on C99's variable macro syntax, so it won't work for standard C++. Apparently Objective-C [is a superset of C99](https://lists.apple.com/archives/objc-language/2005/Aug/msg00050.html), so it should work there, but I haven't tested it.
-
 
 ## License
 
@@ -111,7 +107,7 @@ Libpp is distributed in the hope that it will be useful, but **without any warra
 
 You should have received a copy of the GNU Affero General Public License along with Libpp. If not, see <https://gnu.org/licenses/>.
 
-[Contact me](mailto:me@minglis.id.au) for commercial licensing options.
+[Contact me](mailto:me@minglis.id.au) for proprietary licensing options.
 
 ### Why AGPL?
 
