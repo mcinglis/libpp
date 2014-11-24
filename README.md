@@ -1,5 +1,5 @@
 
-**[Libpp](https://github.com/mcinglis/libpp)** provides functional-programming macros for the C preprocessor, enabling a crude form of a metaprogramming. Libpp is simple, fast, and standards-conformant (C99 and up).
+**Libpp** provides functional-programming macros for the C preprocessor, enabling a crude form of a metaprogramming. Libpp is simple, fast, and standards-conformant (C99 and up).
 
 ``` c
 #include <libpp/foldr.h>         // PP_FOLDR
@@ -50,6 +50,8 @@ Note that `make` will execute the [`templates/render.py`](templates/render.py) s
 I'm storing the rendered templates in version control to make the project more approachable. People can read the code as it's used without cloning the repository and running Make. Also, users can clone the repository and include the headers without requiring Python 3 to generate them.
 
 [Questions](https://github.com/mcinglis/libpp/labels/question), [discussion](https://github.com/mcinglis/libpp/labels/discussion), [bug reports](https://github.com/mcinglis/libpp/labels/bug), [feature requests](https://github.com/mcinglis/libpp/labels/enhancement), and pull requests are very welcome.
+
+Libpp is available at [GitHub](https://github.com/mcinglis/libpp) and [Bitbucket](https://bitbucket.org/mcinglis/libpp).
 
 
 ## Releases
