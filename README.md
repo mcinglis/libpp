@@ -49,10 +49,6 @@ Note that `make` will execute the [`templates/render.py`](templates/render.py) s
 
 I'm storing the rendered templates in version control to make the project more approachable. People can read the code as it's used without cloning the repository and running Make. Also, users can clone the repository and include the headers without requiring Python 3 to generate them.
 
-[Questions](https://github.com/mcinglis/libpp/labels/question), [discussion](https://github.com/mcinglis/libpp/labels/discussion), [bug reports](https://github.com/mcinglis/libpp/labels/bug), [feature requests](https://github.com/mcinglis/libpp/labels/enhancement), and pull requests are very welcome.
-
-Libpp is available at [GitHub](https://github.com/mcinglis/libpp) and [Bitbucket](https://bitbucket.org/mcinglis/libpp).
-
 
 ## Releases
 
@@ -74,6 +70,17 @@ Pass: intersperse
 ```
 
 The tests work by `diff`ing the output of `gcc -E` with each `tests/*.in.c` against the corresponding `tests/*.out.c`. Those `out.c` files contain the preprocessor output provided by GCC 4.8. Thus, the tests may "fail" with other preprocessors, even though they output functionally-equivalent code.
+
+
+## Collaboration
+
+Libpp is available at [Gitorious](https://gitorious.org/mcinglis/libpp), [Bitbucket](https://bitbucket.org/mcinglis/libpp), and [GitHub](https://github.com/mcinglis/libpp).
+
+Questions, discussion, bug reports and feature requests are welcome at [the GitHub issue tracker](https://github.com/mcinglis/libpp/issues), or via [emails](mailto:me@minglis.id.au).
+
+To contribute changes, you're welcome to [email me](mailto:me@minglis.id.au) patches as per `git format-patch`, or to send me a pull request on any of the aforementioned sites. You're also welcome to just send me a link to your remote repository, and I'll merge stuff from that as I want to.
+
+To accept notable contributions, I'll require you to assign your copyright to me. In your email/pull request and commit messages, please insert: "*I hereby irrevocably transfer to Malcolm Inglis (http://minglis.id.au) all copyrights, title, and interest, throughout the world, in these contributions to Libpp*". If you can, please sign the email or pull request, ensuring your GPG key is publicly available.
 
 
 ## Q&A
