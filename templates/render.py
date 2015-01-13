@@ -1,4 +1,4 @@
-#!/bin/env python3
+#!/usr/bin/python3
 
 
 from argparse import ArgumentParser, Namespace
@@ -43,8 +43,7 @@ def parse_args(raw_args: [str]) -> Namespace:
 
 def render(filepath: str, limit: int) -> str:
     text = read_file(filepath)
-    template, code = text.split('\n{}\n'.format(TEMPLATE_SEPARATOR),
-                                maxsplit=2)
+    template, code = text.split('\n{}\n'.format(TEMPLATE_SEPARATOR), 2)
     context = execute(code, filepath)['context']
     return (OUTPUT_PREFIX.format(filepath=filepath)
             + template.format(limit=limit, **(context(limit))))
