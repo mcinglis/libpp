@@ -34,7 +34,19 @@
 //     PP_STRINGIFY( argument, spacing,     isnt,          preserved )
 //     >>> "argument, spacing, isnt, preserved"
 //
-#define PP_STRINGIFY( X ) #X
+#define PP_STRINGIFY( ... ) #__VA_ARGS__
+
+
+// @public
+// Replaces the first evaluation of the given tokens with a string literal of
+// those evaluations conjoined by a comma and a space.
+//
+//     PP_STRINGIFY( CHAR_BIT is not evaluated )
+//     >>> "CHAR_BIT"
+//     PP_STRINGIFY_E( CHAR_BIT is evaluated )
+//     >>> "8"
+//
+#define PP_STRINGIFY_E( ... ) PP_STRINGIFY( __VA_ARGS__ )
 
 
 #endif

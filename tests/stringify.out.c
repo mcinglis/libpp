@@ -1,4 +1,6 @@
-PP_STRINGIFY( example )
-PP_STRINGIFY( example of multiple words )
-PP_STRINGIFY( example, of, multiple, arguments )
-PP_STRINGIFY( argument, spacing, isnt, preserved )
+"example"
+"example of multiple words"
+"example, of, multiple, arguments"
+"argument, spacing, isnt, preserved"
+"CHAR_BIT is not evaluated"
+"8 is evaluated"
