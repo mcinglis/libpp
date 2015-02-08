@@ -11,9 +11,6 @@ OUTPUT_PREFIX = '''
 // You should make changes to this code by editing that template; not
 // this file.
 
-// I'm storing the template renderings in version control to make the
-// project more approachable.
-
 '''
 
 
