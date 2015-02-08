@@ -1,0 +1,12 @@
+{
+    "dependencies": [
+    ],
+    "commands": {
+        "build": "make",
+        "test":  "make test",
+        "clean": "make clean"
+    },
+
+    "_comment": "See: https://gitorious.org/mcinglis/puck"
+}
+
