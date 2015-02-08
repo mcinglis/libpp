@@ -1,4 +1,6 @@
 
+PYTHON ?= python
+
 # The maximum number of arguments that the macros can take:
 LIBPP_LIMIT ?= 128
 
@@ -10,7 +12,7 @@ output    = $(notdir $(templates))
 all: $(output)
 
 $(output): %.h: templates/%.h
-	templates/render.py "$(LIBPP_LIMIT)" "$<" > "$@"
+	$(PYTHON) templates/render.py $(LIBPP_LIMIT) "$<" -o "$@"
 
 
 .PHONY: test
