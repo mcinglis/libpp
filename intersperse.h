@@ -41,8 +41,9 @@
 //
 // Note that arguments are not parenthesized between calls to the separator
 // macro; if you are separating expressions by arithmetic operators, you
-// should strongly consider parenthesizing the arguments yourself. The result
-// is undefined for more than 128 variable arguments.
+// should probably use `PP_MAP` with `PP_PAREN` to parenthesize the
+// individual arguments. The result is undefined for more than 128
+// variable arguments.
 #define PP_INTERSPERSE( SEP, ... ) \
     PP_CONCAT( PP_INTERSPERSE_, PP_COUNT( __VA_ARGS__ ) )( SEP, __VA_ARGS__ )
 
