@@ -28,13 +28,17 @@
 // @public
 //
 //     PP_INTERSPERSE( sep, a )
-//     >>> ( a )
+//     >>> a
 //     PP_INTERSPERSE( sep, a, b )
-//     >>> ( a ) sep( a, b ) ( b )
+//     >>> a sep( a, b ) b
 //     PP_INTERSPERSE( sep, a, b, c )
-//     >>> ( a ) sep( a, b ) ( b ) sep( b, c ) ( c )
+//     >>> a sep( a, b ) b sep( b, c ) c
 //
-// The result is undefined for more than {limit} variable arguments.
+// Note that arguments are not parenthesized between calls to the separator
+// macro; if you are separating expressions by arithmetic operators, you
+// should probably use `PP_MAP` with `PP_PAREN` to parenthesize the
+// individual arguments. The result is undefined for more than {limit}
+// variable arguments.
 #define PP_INTERSPERSE( SEP, ... ) \
     PP_CONCAT( PP_INTERSPERSE_, PP_COUNT( __VA_ARGS__ ) )( SEP, __VA_ARGS__ )
 
@@ -53,12 +57,12 @@ def context(limit):
 
     impls = ''
     args = '_1'
-    body = '(_1)'
+    body = '_1'
     for i in range(1, limit+1):
         impls += intersperse_n.format(n=i, args=args, body=body)
         next_arg = '_{}'.format(i+1)
         args += ',{}'.format(next_arg)
-        body += ' S(_{cur},{next}) ({next})'.format(cur=i, next=next_arg)
+        body += ' S(_{cur},{next}) {next}'.format(cur=i, next=next_arg)
 
     return {'impls': impls}
 

@@ -76,6 +76,10 @@
 #define PP_SEP_BIT_RSHIFT_ASSIGN( ... )    >>=
 #define PP_SEP_FIELD( ... )                .
 #define PP_SEP_DEREF_FIELD( ... )          ->
+#define PP_SEP_SPACE( ... )                " "
+#define PP_SEP_TAB( ... )                  "\t"
+#define PP_SEP_LF( ... )                   "\n"
+#define PP_SEP_CR( ... )                   "\r"
 // @public end
 
 
